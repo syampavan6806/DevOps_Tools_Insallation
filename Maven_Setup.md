@@ -95,7 +95,7 @@ yum install -y wget unzip
 ```bash
 wget https://dlcdn.apache.org/maven/maven-3/3.9.10/binaries/apache-maven-3.9.10-bin.zip
 unzip apache-maven-3.9.10-bin.zip
-rm apache-maven-3.9.10-bin.zip # Remove Once it's Unzipped.
+rm -f apache-maven-3.9.10-bin.zip # Remove Once it's Unzipped.
 ```
 
 ---
