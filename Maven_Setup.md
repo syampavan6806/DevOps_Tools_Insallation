@@ -7,7 +7,7 @@ This guide walks you through installing **Apache Maven 3.9.10** on a **Amazon Li
 ## 🛠 System Requirements
 
 - **JDK**: 1.8 or above (Java is required before installing Maven)
-- **Disk Space**: ~10MB for Maven + dependencies
+- **Java 11** Preffered but depends on Application 
 - **OS**: Any Linux flavor; Tested on Amzon Linux EC2
 - **Maven Version**: 3.9.10
 
@@ -153,12 +153,37 @@ Java version: 1.8.x or 11.x
 
 ## Using Package Managers
 
+### Note: If you want to install specific versions of java and maven, then install manually by download specific versions of java & maven tar/zip files separately then install and set JAVA_HOME, M2_HOME & Add Java & Maven bin to PATH
+
 ### Amazon Linux 2
 
+Check Already Installed Java Packages using yum
+
+```bash
+java -version
+yum list installed | grep java
+```
+
+Example output
+
+```bash
+java-11-openjdk.x86_64
+java-11-openjdk-devel.x86_64
+```
+If You have to Uninstall Java Packages Installed Using yum 
+
+```bash
+sudo yum remove java-11-openjdk java-11-openjdk-devel
+# If you want to remoove all
+sudo yum remove java-*
+# Verify after removing 
+java -version
+```
+
+## Install Maven With Java Using yum
 ```bash
 sudo yum update -y
-sudo amazon-linux-extras enable corretto17
-sudo yum install java-11-amazon-corretto -y
+# Maven Depends On Java So Maven With Java Also will be installed.
 sudo yum install maven -y
 java -version
 javac -version
@@ -167,9 +192,37 @@ mvn --version
 
 ### Ubuntu (20.04 / 22.04 / 24.04)
 
+
+Check Already Installed Java Packages using apt
+
+```bash
+java -version
+dpkg --list | grep -i java
+```
+
+Example output
+
+```bash
+openjdk-17-jdk
+openjdk-11-jdk
+```
+If You have to Uninstall Java Packages Installed Using apt 
+
+```bash
+sudo apt remove openjdk-17-jdk
+# This will Remove Configuration file also 
+sudo apt purge openjdk-17-jdk
+# After removal, clean up unnecessary/unused dependencies:
+sudo apt autoremove
+# Verify after removing 
+java -version
+```
+
+## Install Maven With Java Using apt
+
 ```bash
 sudo apt update
-sudo apt install openjdk-11-jdk -y
+# Maven Depends On Java So Maven With Java Also will be installed.
 sudo apt install maven -y
 java -version
 javac -version
