@@ -147,7 +147,7 @@ Update JDBC settings:
 ```ini
 sonar.jdbc.username=sonar
 sonar.jdbc.password=ChangeMe123
-sonar.jdbc.url=jdbc:postgresql://localhost/sonarqube
+sonar.jdbc.url=jdbc:postgresql://localhost/sonarqube   #instead of localhost we have to give ip adress of dbserver
 ```
 ---
 
